@@ -1,0 +1,70 @@
+{
+    "message.cobblemoneternal.error": "发生错误，请将复现方式和报错时间反馈给MCE团队！",
+    "cobblemoneternal.intentionally_untextured": "此物品尚未拥有纹理，这是已知的！",
+
+    "message.cobblemoneternal.legendary_spawned_nearby": "%s在附近出现了！",
+    "message.cobblemoneternal.command.force_spawn_success": "已强行在玩家%2$s附近制造相遇“%1$s”",
+    "message.cobblemoneternal.command.reset_daily_roamer": "已重置%s的每日漫游宝可梦计数器",
+    "message.cobblemoneternal.command.test_encounter_condition": "%s符合%s%s的条件：%s",
+    "message.cobblemoneternal.command.test_condition.invalid_type": "无效相遇类型：%s",
+    "message.cobblemoneternal.command.set_regi_puzzles": "已设置雷吉谜题为第%s组。重启世界以重置。",
+    "message.cobblemoneternal.command.set_regi_puzzles.oob": "谜题索引‘%s’超出范围（最大值：%s）",
+
+    "message.cobblemoneternal.feature.bottle_cap_min_level_req": "宝可梦需达到50级才能使用王冠！",
+    "message.cobblemoneternal.thats_not_your_pokemon": "这不是你的宝可梦！",
+
+    "message.cobblemoneternal.missing_multiblock": "多方块结构不完整",
+    "message.cobblemoneternal.fail_party_condition": "没有反应，需携带特定的队伍宝可梦。",
+    "message.cobblemoneternal.fail_party_level": "造物未认可你的能力，需携带%s级以上的宝可梦",
+
+    "multiblock.cobblemoneternal.cloning_machine.name": "克隆仪",
+    "block.cobblemoneternal.cloning_machine_core.name": "克隆仪电脑",
+
+    "multiblock.cobblemoneternal.sleeping_giant.name": "沉眠的巨人",
+    "block.cobblemoneternal.regigigas_core.name": "巨人之核",
+
+    "multiblock.cobblemoneternal.stone_shrine.name": "磐岩圣坛",
+    "multiblock.cobblemoneternal.ice_shrine.name": "极冰圣坛",
+    "multiblock.cobblemoneternal.steel_shrine.name": "精钢圣坛",
+    "multiblock.cobblemoneternal.storm_shrine.name": "雷云圣坛",
+    "multiblock.cobblemoneternal.dragon_shrine.name": "龙神圣坛",
+
+
+    "item.cobblemoneternal.bottle_cap.name": "王冠",
+    "item.cobblemoneternal.bottle_cap.desc": "与薄荷叶一起合成可以将个体值提升到最高",
+
+    "item.cobblemoneternal.bottle_cap/typed.name": "银色王冠（%s）",
+    "item.cobblemoneternal.bottle_cap/typed.desc": "将%s个体值提升到最高",
+
+    "item.cobblemoneternal.bottle_cap_gold.name": "金色王冠",
+    "item.cobblemoneternal.bottle_cap_gold.desc": "将所有个体值提升到最高",
+
+    "item.cobblemoneternal.potential_limiter.desc": "副手持有时，王冠将个体值提升到最高",
+
+
+    "message.cobblemoneternal.stat_maximized": "%s的%s个体值已达到最高！",
+    "message.cobblemoneternal.multiple_stats_maximized": "%s的%s个体值已达到最高！——尚未使用",
+    "message.cobblemoneternal.all_stats_maximized": "%s的所有个体值已达到最高！",
+
+    "message.cobblemoneternal.stat_minimized": "%s的%s个体值已达到最低！",
+    "message.cobblemoneternal.multiple_stats_minimized": "%s的%s个体值已达到最低！——尚未使用",
+    "message.cobblemoneternal.all_stats_minimized": "%s的所有个体值已达到最低！",
+
+    "message.cobblemoneternal.message_separator": "，",
+
+
+    "cobblemoneternal.village_map": "村庄地图",
+
+
+    "cobblemoneternal.pokemon.form_change": "%s changed form!",
+    "cobblemoneternal.pokemon.form_change_eternal": "%s已变身为永恒形态！",
+
+    "cobblemon.ui.pokedex.region.eternal": "永恒（开发中）",
+
+    "cobblemoneternal.species.barry.name": "巴里",
+    "cobblemoneternal.species.barry.desc": "一只拥有强大力量的啮齿动物。",
+    
+    "cobblemoneternal.species.snom-eternal.desc": "由于有坚硬的冰壳保护，这只宝可梦有足够的思考时间。据观察，它经常回答其他宝可梦提出的问题。",
+
+    "cobblemoneternal.species.rotom-eternal.desc": "尽管外形与灯泡相似，但这只宝可梦并不十分明亮。在与雪吞虫交互时，经常可以看到它们被逗弄。"
+}
