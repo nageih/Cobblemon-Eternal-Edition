@@ -97,9 +97,6 @@ const createPokemon = (speciesID, properties) => {
             }
         if(properties.ability)
             pokemon.updateAbility(new $Ability($Abilities.INSTANCE.get(properties.ability), false))
-
-        if(!properties.skipAutomaticBattleStart)
-            $PokemonProperties.Companion.parse("uncatchable=true").apply(pokemon)
     }
 
     // console.log(pokemon)
