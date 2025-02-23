@@ -18,14 +18,15 @@ global.loadMewDuo = () => {
             //heldItem: Item.of('cobblemoneternal:mewtant_genome')
         },
         condition: (player) => {
-            if(!global.partyLevel(player) >= 40 || !global.playerIsInBiome(player, 'forge:is_jungle')) return false;
+            //console.log(`Testing Mew encounter condition, partyLevel is sufficient: ${global.partyLevel(player) >= 40}, inJungleBiome: ${global.playerIsInBiome(player, 'cobblemon:is_jungle')}`)
+            if(!global.partyLevel(player) >= 40 || !global.playerIsInBiome(player, 'cobblemon:is_jungle')) return false;
 
             let highFriendshipMon = 0
             global.partyOf(player).forEach(pokemon => {
                 if(pokemon.friendship > 220) highFriendshipMon++
             })
-            if(highFriendshipMon < 3) return false;
-            return true;
+            //console.log(`${player.username} has ${highFriendshipMon} pokemon with high friendship`)
+            return highFriendshipMon >= 3;
         }
     }
 
