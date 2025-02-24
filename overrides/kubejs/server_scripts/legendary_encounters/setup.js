@@ -12,15 +12,15 @@ ServerEvents.loaded(event => {
     //Object.keys(global.regiPuzzleIndex).forEach(regi => console.log(`${regi} = ${global.regiPuzzleIndex[regi]}`))
 })
 
-const playerRoamerOffsets = {}
 
 PlayerEvents.loggedIn(event => {
-    if(playerRoamerOffsets[event.player.uuid]) return;
+    if(global.playerRoamerOffsets[event.player.uuid]) return;
 
     let player = event.player
     let offset = mangleUUID(player.uuid)
     //console.log(player.uuid, offset)
-    playerRoamerOffsets[player.uuid] = offset
+    global.addPlayerRoamerOffset(player.uuid, offset)
+    //console.log(global.playerRoamerOffsets[player.uuid])
 })
 
 const mangleUUID = (uuid) => {

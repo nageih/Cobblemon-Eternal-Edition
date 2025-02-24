@@ -24,6 +24,11 @@ StartupEvents.init(event => {
     // primarily used for shifting spawns for already owned Legendaries to another of their group
     global.legendaryGroups = {}
 
+
+    //Map for Roaming Encounter offset values
+    // generated on login as opposed to stored as persistentData, because that requires using 'parseInt()'. every tick.
+    global.playerRoamerOffsets = {}
+
     console.log('Initialized Encounter data storage.')
 })
 
@@ -189,6 +194,11 @@ global.loadAllEncounters = () => {
     global.loadRegis()
 }
 
+
+global.addPlayerRoamerOffset = (uuid, offset) => {
+    global.playerRoamerOffsets[uuid] = offset
+}
+
 //write to lookup tables
 const transcribeTables = () => {
     //Transcribe entries in roamingConditionalEncounters into registeredRoamers
@@ -212,4 +222,29 @@ const transcribeTables = () => {
     Object.keys(global.registeredStatics).forEach(block => {
         console.log(global.registeredStatics[block], block)
     })
+}
+
+//simple group odds modifier
+// group must be provided, because different groups can hypothetically contain the same species.
+// but mostly because trying to find the group a species belonged to was being invalid type hell.
+const groupOddsModifier = (thisSpecies, group, amountPer, player) => {
+    //console.log(`calculating groupOddsModifier for species '${thisSpecies}'`)
+    let modifier = 1.0
+    let alreadyAdded = []
+
+    //console.log(group)
+    for (const pokemon of global.partyOf(player)) {
+        let speciesName = pokemon.species.resourceIdentifier.path
+        //console.log(speciesName)
+        if(speciesName == thisSpecies) { //can't spawn if you already have it
+            //console.log(`player already has ${thisSpecies}! modifier is now 0.0`)
+            modifier = 0.0
+            break;
+        } else if(group.includes(speciesName) && !alreadyAdded.includes(speciesName)) {
+            modifier += amountPer
+            //console.log(`species ${speciesName} is in group of ${thisSpecies}, +${amountPer}, (${modifier})`)
+            alreadyAdded.push(speciesName)
+        }
+    }
+    return modifier;
 }

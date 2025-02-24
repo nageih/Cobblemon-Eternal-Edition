@@ -110,26 +110,32 @@ const trySpawnRoamingLegendary = (player, spawnDetails, bypassChecks) => {
 // this does have weight more recently, through "global.selectRoamingLegendary()" but it does not really come into play with the minimal amount of roamers implemented.
 PlayerEvents.tick(event => {
     if(!event.level.remote){
-        if(event.level.time % roamingLegendaryCheckFrequency == playerRoamerOffsets[event.player.uuid]){
+        if(event.level.time % roamingLegendaryCheckFrequency == global.playerRoamerOffsets[event.player.uuid]){
             console.log(`running Roamer check for ${event.player.username} at ${event.level.time}`)
             let rand = Math.random()
             let roamerSuccesses = parseInt(event.player.persistentData.dailyRoamerSuccesses)
+            let selectedEncounter = global.selectRoamingLegendary(event.player)
+            if(selectedEncounter == undefined) return;
+            //console.log(selectedEncounter.getOddsModifier)
+            let oddsModifier = selectedEncounter.getOddsModifier ? 
+                    selectedEncounter.getOddsModifier(event.player) : 1.0
             /*
             console.log(
                 `successes limit: ${maxRoamersPerDay}`,
                 `current successes: ${roamerSuccesses}`,
                 `successes not at limit: ${roamerSuccesses < maxRoamersPerDay}`,
                 `random value: ${rand}`,
-                `sucess rate: ${1.0 - roamerSpawnCheckSuccessRate}`
+                `success rate: ${1.0 - (roamerSpawnCheckSuccessRate * oddsModifier)}`,
+                `selected encounter: ${selectedEncounter.species}, oddsModifier: ${oddsModifier}`
             )
                 */
             if(roamerSuccesses < maxRoamersPerDay
-                && rand > (1.0 - roamerSpawnCheckSuccessRate)){
+                && rand > (1.0 - (roamerSpawnCheckSuccessRate * oddsModifier))){
                 console.log(`attempting roaming legendary spawn near ${event.player.username}`)
                 global.setCopyRoamerGroup()
                 trySpawnRoamingLegendary(
                     event.player,
-                    global.selectRoamingLegendary(event.player)
+                    selectedEncounter
                 )
             }
         }

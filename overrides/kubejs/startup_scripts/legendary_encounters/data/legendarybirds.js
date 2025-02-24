@@ -40,7 +40,9 @@ global.loadLegendaryBirds = () => {
                 return false;
             }
         },
-        alreadyOwns: (player, species) => global.spawnOtherMemberOfGroup(player, species)
+        getOddsModifier: (player) => {
+            return groupOddsModifier('moltres', global.legendaryGroups.legendaryBirds, 0.5, player)
+        }
     }
 
 
@@ -72,7 +74,9 @@ global.loadLegendaryBirds = () => {
                 return false;
             }
         },
-        alreadyOwns: (player, species) => global.spawnOtherMemberOfGroup(player, species)
+        getOddsModifier: (player) => {
+            return groupOddsModifier('zapdos', global.legendaryGroups.legendaryBirds, 0.5, player)
+        }
     }
 
 
@@ -104,7 +108,9 @@ global.loadLegendaryBirds = () => {
                 return false
             }
         },
-        alreadyOwns: (player, species) => global.spawnOtherMemberOfGroup(player, species),
+        getOddsModifier: (player) => {
+            return groupOddsModifier('articuno', global.legendaryGroups.legendaryBirds, 0.5, player)
+        }
     }
 
     return true;
