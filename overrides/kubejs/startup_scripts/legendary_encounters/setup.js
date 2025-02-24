@@ -181,6 +181,8 @@ global.loadAllEncounters = () => {
 
     //load encounters by set/group
     // try to sort by introduction generation order
+    // functions should return true at the end,
+    // for the purposes of the "/encounterreload" command's set function
     global.loadLegendaryBirds()
     global.loadMewDuo()
 

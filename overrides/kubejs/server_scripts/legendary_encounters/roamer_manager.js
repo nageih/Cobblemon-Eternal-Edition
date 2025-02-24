@@ -50,24 +50,35 @@ const trySpawnRoamingLegendary = (player, spawnDetails, bypassChecks) => {
     } else {
      */
         //console.log(`${spawnDetails.species} is not a flyer, looking for a ground position`)
-        if(!spawnDetails.canBeUnderground) pos = level.getBlock(pos.x, 60, pos.z).pos
+        //if(!spawnDetails.canBeUnderground) pos = level.getBlock(pos.x, 60, pos.z).pos
         let lastBlockWasAir = false
-        for (let currentY = pos.y; currentY < 319; currentY++){
-            if(level.getBlock(pos.x, currentY, pos.z) == 'minecraft:air'){
-                if(currentY < -64) {
-                    console.warn(`Roamer ${spawnDetails.species} could not find ground to spawn on!`)
+        let upFromPlayer = Math.floor(player.y) + 32
+        let downFromPlayer = Math.floor(player.y) - 32
+        let iterations = 0;
+        for (let currentY = upFromPlayer; currentY > downFromPlayer; currentY--){
+            if(iterations == 100) {
+                console.warn(`position finding for roamer '${spawnDetails.species}' took more than 100 iterations, emergency breaking!`)
+                break;
+            }
+            let currentBlock = level.getBlock(pos.x, currentY, pos.z)
+            //console.log(currentBlock.pos, currentBlock, currentY < -64)
+            if(currentBlock == 'minecraft:air'){
+                if(currentY < downFromPlayer || currentY < -64) {
+                    console.warn(`Roamer ${spawnDetails.species} could not find ground to spawn on! between ${upFromPlayer} and ${downFromPlayer}, at ${pos.x}x ${pos.z}z`)
                     return;
                 }
 
-                if(lastBlockWasAir){
-                    pos = level.getBlock(pos.x, currentY, pos.z).pos
+                lastBlockWasAir = true
+            } else {
+                if(lastBlockWasAir && currentBlock != 'minecraft:air') {
+                    pos = currentBlock.pos.mutable()
+                    pos.y++
                     console.log(`Valid pos found at ${pos}`)
                     break;
                 }
-                lastBlockWasAir = true
-            } else {
                 lastBlockWasAir = false
             }
+            iterations++
         }
     //}
     //console.log('Y position adjustment done')
@@ -95,8 +106,8 @@ const trySpawnRoamingLegendary = (player, spawnDetails, bypassChecks) => {
 
 
 //the engine, so to speak
-// attempts to spawn a Roamer every X ticks (default 7000, + or - 1000 based on UUID [NYI]), with a 20% chance of success, if one has not already spawned with in the day
-// there is no weighting to this, it simply picks one at random from the list and runs its check, spawning it if it succeeds
+// attempts to spawn a Roamer every (default) 7000 ticks, offset by up to (default) 1000, based on the player's UUID, with a (default) 20% chance of success, if one has not already spawned with in the day
+// this does have weight more recently, through "global.selectRoamingLegendary()" but it does not really come into play with the minimal amount of roamers implemented.
 PlayerEvents.tick(event => {
     if(!event.level.remote){
         if(event.level.time % roamingLegendaryCheckFrequency == playerRoamerOffsets[event.player.uuid]){

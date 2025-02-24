@@ -107,4 +107,5 @@ global.loadLegendaryBirds = () => {
         alreadyOwns: (player, species) => global.spawnOtherMemberOfGroup(player, species),
     }
 
+    return true;
 }

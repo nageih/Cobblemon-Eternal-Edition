@@ -69,4 +69,6 @@ global.loadMewDuo = () => {
             }
         }
     }
+
+    return true;
 }

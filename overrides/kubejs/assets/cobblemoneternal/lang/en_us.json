@@ -7,6 +7,9 @@
     "message.cobblemoneternal.command.reset_daily_roamer": "Daily roamer counter reset for %s",
     "message.cobblemoneternal.command.test_encounter_condition": "%s meets condition for %s %s: %s",
     "message.cobblemoneternal.command.test_condition.invalid_type": "Invalid encounter type: %s",
+    "message.cobblemoneternal.command.reload_conditional_encounters.all": "Reloaded All Encounter data.",
+    "message.cobblemoneternal.command.reload_conditional_encounters.set": "Reloaded Encounter data for '%s'.",
+    "message.cobblemoneternal.command.reload_conditional_encounters.invalid_set": "No such Encounter set '%s'. ensure you're using TitleCase format.",
     "message.cobblemoneternal.command.set_regi_puzzles": "Set Regi Puzzles to Set %s. Restart world to reset.",
     "message.cobblemoneternal.command.set_regi_puzzles.oob": "Puzzle index '%s' is Out of Bounds. Maximum is %s.",
 

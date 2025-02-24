@@ -225,15 +225,21 @@ ServerEvents.commandRegistry(event => {
             .requires(source => source.hasPermission(2))
             .executes(ctx => {
                 global.reloadEncounterData()
-                ctx.source.player.tell(Text.translate('message.cobblemoneternal.command.reload_conditional_encounters'))
+                ctx.source.player.tell(Text.translate('message.cobblemoneternal.command.reload_conditional_encounters.all'))
                 return 1
             })
             .then(Commands.argument('set', Arguments.STRING.create(event))
                 .executes(ctx => {
                     let set = Arguments.STRING.getResult(ctx, 'set')
-                    global[`load${set}`]()
-                    ctx.source.player.tell(Text.translate('message.cobblemoneternal.command.reload_conditional_encounters'))
-                    return 1
+                    let setName = `load${set}`
+                    if(global[setName]) {
+                        global[setName]()
+                        ctx.source.player.tell(Text.translate('message.cobblemoneternal.command.reload_conditional_encounters.set', set))
+                        return 1
+                    } else {
+                        ctx.source.player.tell(Text.translate('message.cobblemoneternal.command.reload_conditional_encounters.invalid_set', set))
+                        return 0
+                    }
                 })
             )
     )

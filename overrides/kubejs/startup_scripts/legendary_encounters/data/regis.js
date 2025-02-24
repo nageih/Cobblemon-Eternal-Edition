@@ -475,4 +475,5 @@ global.loadRegis = () => {
         }
     }
 
+    return true;
 }
