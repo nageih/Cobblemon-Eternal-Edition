@@ -24,7 +24,7 @@ PlayerEvents.loggedIn(event => {
 })
 
 const mangleUUID = (uuid) => {
-    return uuid.hashCode() % 1000
+    return uuid.hashCode() % roamerOffsetMaximum
 }
 
 

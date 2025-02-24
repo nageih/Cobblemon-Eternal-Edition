@@ -97,3 +97,16 @@ global.addMove = (pokemon, move, player, nickname) => {
         player.tell(Text.translate("cobblemon.experience.learned_move", nickname, Text.translate(`cobblemon.move.${move}`)))
     }
 }
+
+//instructs the Client to play a message in its preferred location.
+/**
+ * 
+ */
+global.playLegendaryMessage = (player, message, species, color) => {
+    player.sendData('chatMessage', {
+        player: player,
+        message: message,
+        species: species,
+        color: color
+    })
+}

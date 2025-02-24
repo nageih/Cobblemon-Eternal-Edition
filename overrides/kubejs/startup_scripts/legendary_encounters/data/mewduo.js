@@ -5,7 +5,10 @@ global.loadMewDuo = () => {
     global.roamingConditionalEncounters.mew = {
         species: 'cobblemon:mew',
         weight: 10,
-        spawnSound: 'minecraft:block.note_block.bell',
+        spawnSound: {
+            event: 'minecraft:block.note_block.bell'
+        },
+        textColor: 'light_purple',
         properties: {
             level: 50,
             moveSet: [

@@ -75,12 +75,8 @@ const trySpawnRoamingLegendary = (player, spawnDetails, bypassChecks) => {
     level.getEntitiesWithin(AABB.ofBlock(pos).inflate(64))
         .filter(entity => entity.type == 'minecraft:player')
         .forEach(player => {
-            let speciesName = spawnDetails.species.split(':')
             //console.log(player)
-            player.setStatusMessage(Text.translate('message.cobblemoneternal.legendary_spawned_nearby',
-                Text.translate(`${speciesName[0]}.species.${speciesName[1]}.name`)
-                    .color(spawnDetails.textColor ? spawnDetails.textColor : 'white')
-            ))
+            global.playLegendaryMessage(player, 'message.cobblemoneternal.legendary_spawned_nearby', spawnDetails.species, spawnDetails.textColor ? spawnDetails.textColor : 'white')
 
             let spawnSound = spawnDetails.spawnSound
             global.playSoundNear(player, null, spawnSound.event, 'neutral', spawnSound.volume ? spawnSound.volume : 1, spawnSound.pitch ? spawnSound.pitch : 1)
