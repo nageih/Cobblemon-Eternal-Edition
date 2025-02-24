@@ -25,6 +25,11 @@ const $InteractionHand = Java.loadClass('net.minecraft.world.InteractionHand')
 // default: [7000]
 const roamingLegendaryCheckFrequency = 7000
 
+//Maximum Offset for Roamer Spawning for any individual player
+// Put simply, this is the value used for Modulo division when calculating a Player's Roamer Offset value.
+// Changing this will drastically change the results of this calculation.
+const roamerOffsetMaximum = 1000
+
 //Chance for a Roaming Legendary check to actually be performed
 // this exists to make them not spawn massively frequently and add an element of randomness to when they decide to show up.
 const roamerSpawnCheckSuccessRate = 0.2
@@ -138,6 +143,10 @@ const testEncounterCondition = (player, species, encounterType) => {
     return encounterData.condition(player)
 }
 
+const booleanString = (bool) => {
+    return bool ? 'true' : 'false'
+}
+
 ServerEvents.commandRegistry(event => {
     const {commands: Commands, arguments: Arguments, builtinSuggestions: Suggestions} = event
 
@@ -158,9 +167,9 @@ ServerEvents.commandRegistry(event => {
                         let condition = testEncounterCondition(player, species, encounterType)
                         player.tell(
                             Text.translate('message.cobblemoneternal.command.test_encounter_condition',
-                                player.username, encounterType, species, condition)
+                                player.username, encounterType, species, booleanString(condition))
                         )
-                        player.tell(condition)
+                        //player.tell(condition)
                         return condition ? 1 : 0
                     })
                     .then(Commands.argument('player', Arguments.PLAYER.create(event))
@@ -172,9 +181,9 @@ ServerEvents.commandRegistry(event => {
                             if(ctx.source.player)
                                 ctx.source.player.tell(
                                     Text.translate('message.cobblemoneternal.command.test_encounter_condition',
-                                        player.username, encounterType, species, condition)
+                                        player.username, encounterType, species, booleanString(condition))
                                 )
-                            player.tell(condition)
+                            //player.tell(condition)
                             return condition ? 1 : 0
                         })
                     )

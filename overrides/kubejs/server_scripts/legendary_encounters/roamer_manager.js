@@ -103,7 +103,7 @@ const trySpawnRoamingLegendary = (player, spawnDetails, bypassChecks) => {
 // there is no weighting to this, it simply picks one at random from the list and runs its check, spawning it if it succeeds
 PlayerEvents.tick(event => {
     if(!event.level.remote){
-        if(event.level.time % roamingLegendaryCheckFrequency == 0){
+        if(event.level.time % roamingLegendaryCheckFrequency == playerRoamerOffsets[event.player.uuid]){
             console.log(`running Roamer check for ${event.player.username} at ${event.level.time}`)
             let rand = Math.random()
             let roamerSuccesses = parseInt(event.player.persistentData.dailyRoamerSuccesses)
