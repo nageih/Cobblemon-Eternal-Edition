@@ -89,3 +89,8 @@ ServerEvents.tags('item', event => {
     ])
 
 })
+
+
+ServerEvents.tags('block', event => {
+    event.add('cobblemon:berry_soil', 'farmersdelight:rich_soil_farmland')
+})
