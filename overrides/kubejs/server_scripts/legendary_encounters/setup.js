@@ -17,8 +17,8 @@ PlayerEvents.loggedIn(event => {
     if(global.playerRoamerOffsets[event.player.uuid]) return;
 
     let player = event.player
-    let offset = mangleUUID(player.uuid)
-    //console.log(player.uuid, offset)
+    let offset = Math.abs(mangleUUID(player.uuid))
+    //console.log(player.uuid, offset, Math.abs(offset))
     global.addPlayerRoamerOffset(player.uuid, offset)
     //console.log(global.playerRoamerOffsets[player.uuid])
 })
@@ -32,6 +32,6 @@ const mangleUUID = (uuid) => {
 // how else do you want me to test it in singleplayer?
 /*
 ItemEvents.entityInteracted(event => {
-    console.log(mangleUUID(event.target.uuid))
+    console.log(Math.abs(mangleUUID(event.target.uuid)))
 })
 */
