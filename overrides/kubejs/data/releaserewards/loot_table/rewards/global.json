@@ -2,7 +2,39 @@
   "pools": [
     {
       "rolls": 1,
-      "name": "xp_candy",
+      "name": "type_rewards",
+      "entries": [
+        {
+          "type": "releaserewards:type_rewards"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "name": "species_rewards",
+      "entries": [
+        {
+          "type": "releaserewards:species_rewards"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "name": "global_rewards_pokemon_drops",
+      "entries": [
+        {
+          "type": "releaserewards:pokemon_drops",
+          "weight": 2
+        },
+        {
+          "type": "empty",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "name": "global_rewards",
       "entries": [
         {
           "type": "empty",
