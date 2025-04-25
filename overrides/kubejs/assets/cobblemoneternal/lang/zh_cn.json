@@ -7,6 +7,9 @@
     "message.cobblemoneternal.command.reset_daily_roamer": "已重置%s的每日漫游宝可梦计数器",
     "message.cobblemoneternal.command.test_encounter_condition": "%s符合%s%s的条件：%s",
     "message.cobblemoneternal.command.test_condition.invalid_type": "无效相遇类型：%s",
+    "message.cobblemoneternal.command.reload_conditional_encounters.all": "已重载所有相遇数据。",
+    "message.cobblemoneternal.command.reload_conditional_encounters.set": "已重置‘%s’相遇数据。",
+    "message.cobblemoneternal.command.reload_conditional_encounters.invalid_set": "没有名为‘%s’的相遇。请确保你使用的是TitleCase格式。",
     "message.cobblemoneternal.command.set_regi_puzzles": "已设置雷吉谜题为第%s组。重启世界以重置。",
     "message.cobblemoneternal.command.set_regi_puzzles.oob": "谜题索引‘%s’超出范围（最大值：%s）",
 
@@ -56,7 +59,7 @@
     "cobblemoneternal.village_map": "村庄地图",
 
 
-    "cobblemoneternal.pokemon.form_change": "%s changed form!",
+    "cobblemoneternal.pokemon.form_change": "%s已改变形态！",
     "cobblemoneternal.pokemon.form_change_eternal": "%s已变身为永恒形态！",
 
     "cobblemon.ui.pokedex.region.eternal": "永恒（开发中）",
